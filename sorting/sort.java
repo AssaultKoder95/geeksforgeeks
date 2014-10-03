@@ -241,6 +241,7 @@ public class sort {
 		if(array[low] == element) return low;
 		return -1;
 	}
+
 	public static void main(String[] args) {
 		int[] array = {1,2,2,2,3, 10, 3, 40, 20, 50, 80, 70,12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56};
 		sort ss = new sort();

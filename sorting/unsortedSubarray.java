@@ -1,45 +1,45 @@
+//O(n)
 public class unsortedSubarray {
-	public static int[] find(int[] array) {
-		int left = findLeft(array, 0, array.length - 1);
-		int right = findRight(array, 0, array.length - 1);
-		System.out.println(left + " " + right);
-		int[] arr = new int[right - left - 1];
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = array[i + left];
+
+	public int[] find(int[] array) {
+		int left = 0, right = array.length - 1;
+		for(int i = 1; i < array.length; i++) {
+			if(array[i] < array[i - 1]) {
+				left = i - 1;
+				break;
+			}
 		}
-		return arr;
-	}
-	public static int findRight(int[] array, int left, int right) {
-		if(left > right) {
-			if(right >= 1 && array[right] >= array[right - 1]) return right - 1;
-			else return right >= 0? right : right + 1;
+		for(int i = array.length - 1; i > 0; i--) {
+			if(array[i] < array[i - 1]) {
+				right = i;
+				break;
+			}
 		}
-		int middle = (left + right) / 2;
-		if(sorted(array, left, middle)) {
-			return findLeft(array, middle + 1, right);
+		int min = array[left];
+		int max = array[right];
+		for(int i = left; i <= right; i++) {
+			min = Math.min(array[i], min);
+			max = Math.max(array[i], max);
 		}
-		else return findLeft(array, middle + 1, right);
-	}
-	public static int findLeft(int[] array, int left, int right) {
-		if(left > right) {
-			if(left < array.length - 1 && array[left] <= array[left + 1]) return left;
-			else return left < array.length? left : left - 1;
+		for(int i = 0; i < left; i++) {
+			if(array[i] > min) {
+				left = i;
+				break;
+			}
 		}
-		int middle = (left + right) / 2;
-		if(sorted(array, middle, right)) {
-			return findLeft(array, middle - 1, left);
+		for(int i = array.length - 1; i > right; i--) {
+			if(array[i] < max) {
+				right = i;
+				break;
+			}
 		}
-		else return findLeft(array, middle + 1, right);
-	}
-	public static boolean sorted(int[] array, int left, int right) {
-		for(int i = left; i < right - 1; i++) {
-			if(array[left] > array[left+1]) return false;
-		}
-		return true;
+		int[] res = {left, right};
+		return res;
 	}
 	public static void main(String[] args) {
+		unsortedSubarray us = new unsortedSubarray();
 		int[] array = {10, 12, 20, 30, 25, 40, 32, 31, 35, 50, 60};
-		int[] res = find(array);
+		int[] res = us.find(array);
 		for(int i : res)
 			System.out.println(i);
 	}
