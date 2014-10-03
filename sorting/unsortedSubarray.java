@@ -1,3 +1,5 @@
+//Find the Minimum length Unsorted Subarray, sorting which makes the complete array sorted
+//Given an unsorted array arr[0..n-1] of size n, find the minimum length subarray arr[s..e] such that sorting this subarray makes the whole array sorted.
 //O(n)
 public class unsortedSubarray {
 
