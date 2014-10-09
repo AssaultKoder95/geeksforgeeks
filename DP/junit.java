@@ -69,4 +69,63 @@ public class junit {
 		int num = knapsack.knap(values, weights, 100);
 		assertTrue(num == 156);
 	}
+	@Test
+	public void test10() {
+		int[] values = {1,5,8,9,10,17,17,20};
+		int n = CuttingRod.maxValueInCutting(values);
+		assertTrue(n == 22);
+	}
+	@Test
+	public void test11() {
+		int[] values = {3,5,8,9,10,17,17,20};
+		int n = CuttingRod.maxValueInCutting(values);
+		assertTrue(n == 24);
+	}
+	@Test
+	public void test12() {
+		int[] value = {1,101,2,3,100,4,5};
+		int n = maxSumIncrease.getSum(value);
+		assertTrue(n == 106);
+	}
+	@Test
+	public void test13() {
+		int[] value = {3,4,5,10};
+		int n = maxSumIncrease.getSum(value);
+		assertTrue(n == 22);
+	}
+	@Test
+	public void test14() {
+		int[] array = {1,11,2,10,4,5,2,1};
+		int n = longBitonicSeq.bitonic(array);
+		assertTrue(n == 6);
+	}
+	@Test
+	public void test15() {
+		int[] array = {12,11,40,5,3,1};
+		int n = longBitonicSeq.bitonic(array);
+		assertTrue(n == 5);
+	}
+	@Test
+	public void test16() {
+		int[] array = {80,60,30,40,20,10};
+		int n = longBitonicSeq.bitonic(array);
+		assertTrue(n == 5);
+	}
+	@Test
+	public void test17() {
+		Integer[][] array = {{4,6,7}, {1,2,3}, {4,5,6}, {10,12,32}};
+		int n = BoxStacking.getHeight(array);
+		assertTrue(n == 60);
+	}
+	@Test
+	public void test18() {
+		int[] freq = {34, 8, 50};
+		int n = OptimalBST.minCost(freq);
+		assertTrue(n == 142);
+	}
+	@Test
+	public void test19() {
+		int n = noConsecutiveOne.count(3);
+		assertTrue(n == 5);
+	}
 }
