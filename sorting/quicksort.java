@@ -1,7 +1,7 @@
 import java.util.Random;
 public class quicksort {
 	/*
-	 * quickSort
+	 * quickSort, pay attention to the partition part: the end point of pivot
 	 */
 
 	public void quickSort(int[] array) {
@@ -11,25 +11,19 @@ public class quicksort {
 		if(start >= end) return;
 		int pivot = partition(array, start, end);
 		quickSort(array, start, pivot - 1);
-		quickSort(array, pivot, end);  
+		quickSort(array, pivot + 1, end);  
 	}
 	public int partition(int[] array, int start, int end) {
-		Random rd = new Random();
-		int pivot = array[start + rd.nextInt(end - start)];  //must have pivot determined at the beginning, don't use int pivot = start + (end - start) / 2 !!!!
-		int left = start, right = end;
-		while(left <= right) {
-			while(array[left] < pivot) {     //important: no "="
-				left++;
+		int pivot = array[start + (end - start) / 2];  //must have pivot determined at the beginning, don't use int pivot = start + (end - start) / 2 !!!!
+		int left = start;
+		swap(array, start + (end - start) / 2, end);
+		while(start < end) {
+			if(array[start] < pivot) {
+				swap(array, left++, start);
 			}
-			while(array[right] > pivot) {
-				right--;
-			}
-			if(left <= right) {
-			    swap(array, left, right);
-			    left++;
-			    right--;
-			}
+			start++;
 		}
+		swap(array, left, end);
 		return left;
 	}
 	public void swap(int[] array, int a, int b) {

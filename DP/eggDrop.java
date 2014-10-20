@@ -45,6 +45,6 @@ public class eggDrop {
 		return matrix[k][n];
 	}
 	public static void main(String[] args) {
-		System.out.println(trial(36, 2));
+		System.out.println(trial(1000, 1));
 	}
 }
